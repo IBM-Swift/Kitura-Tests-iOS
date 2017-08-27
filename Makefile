@@ -27,6 +27,7 @@ openXcodeAll: iOSStaticLibraries/Curl ServerSide/Package.swift
 
 	@echo ——- Fixing ServerSide Xcode project
 	ruby ${KITURA_IOS_BUILD_SCRIPTS_DIR}/fix_server_side_xcode_project.rb ServerSide/*.xcodeproj "" ${NUMBER_OF_BITS}
+	ruby Scripts/fix_server_side_xcode_project.rb ServerSide/*.xcodeproj ${NUMBER_OF_BITS}
 
 	@echo --- Opening Kitura Xcode Project
 	open ServerSide/Kitura.xcodeproj
