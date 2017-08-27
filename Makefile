@@ -14,9 +14,9 @@
 
 export KITURA_IOS_BUILD_SCRIPTS_DIR=Builder/Scripts
 
-all: openXcode
+all: prepareXcode
 
-openXcodeAll: iOSStaticLibraries/Curl ServerSide/Package.swift
+prepareXcodeAll: iOSStaticLibraries/Curl ServerSide/Package.swift
 	rm -f ServerSide/.build/checkouts/Kitura-net.git--*/Sources/CHTTPParser/include/module.modulemap
 	@echo --- Generating ServerSide Xcode project
 	cd ServerSide && swift package generate-xcodeproj
@@ -29,14 +29,14 @@ openXcodeAll: iOSStaticLibraries/Curl ServerSide/Package.swift
 	ruby ${KITURA_IOS_BUILD_SCRIPTS_DIR}/fix_server_side_xcode_project.rb ServerSide/*.xcodeproj "" ${NUMBER_OF_BITS}
 	ruby Scripts/fix_server_side_xcode_project.rb ServerSide/*.xcodeproj ${NUMBER_OF_BITS}
 
-	@echo --- Opening Kitura Xcode Project
-	open ServerSide/Kitura.xcodeproj
+prepareXcode32:
+	make NUMBER_OF_BITS="32" prepareXcodeAll
 
-openXcode32:
-	make NUMBER_OF_BITS="32" openXcodeAll
+prepareXcode:
+	make NUMBER_OF_BITS="64" prepareXcodeAll
 
-openXcode:
-	make NUMBER_OF_BITS="64" openXcodeAll
+test: prepareXcode
+	xcodebuild test -project ServerSide/*.xcodeproj -scheme Kitura -destination 'platform=iOS Simulator,OS=10.3.1,name=iPhone 7'
 
 ServerSide/Package.swift:
 	@echo --- Fetching submodules
@@ -53,4 +53,4 @@ iOSStaticLibraries/Curl:
 	@echo "You can download curl source from https://curl.haxx.se/download/"
 	exit 1
 
-.PHONY: openXcode
+.PHONY: prepareXcode

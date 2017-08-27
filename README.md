@@ -16,7 +16,11 @@ This project builds Kitura project on iOS, to enable Kitura testing on iOS.
 **We tested working with curl 7.43.0 version.**
 
 # Build the project in Xcode
-1. Type `make` in the terminal, an Xcode instance with Kitura project will be opened.
-2. In the opened Xcode project, change the environment of Kitura target to be an iOS Simulator (Kitura tests do not run on iOS devices, a limitation from Apple)
-3. Switch to Tests Navigator and run the tests 
+1. Type `make` in the terminal - it will fetch the required submodules and fix `ServerSide/Kitura.xcodeproj`
+2. Open `ServerSide/Kitura.xcodeproj`
+3. Change the environment of Kitura target to be an iOS Simulator (Kitura tests do not run on iOS devices, a limitation from Apple)
+4. Switch to Tests Navigator and run the tests
+
+# Run tests in the command Line
+Run `make test`
 
