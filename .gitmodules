@@ -1,6 +1,6 @@
-[submodule "ServerSide"]
-	path = ServerSide
-	url = https://github.com/vadimeisenbergibm/Kitura
 [submodule "Builder"]
 	path = Builder
 	url = https://github.com/IBM-Swift/Kitura-Builder-iOS.git
+[submodule "ServerSide"]
+	path = ServerSide
+	url = https://github.com/IBM-Swift/Kitura.git
