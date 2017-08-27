@@ -24,9 +24,10 @@ openXcodeAll: iOSStaticLibraries/Curl ServerSide/Package.swift
 		ServerSide/.build/checkouts/Kitura-net.git--*/Sources/CHTTPParser/include/
 # regenerate xcode project with the generated module map
 	cd ServerSide && swift package generate-xcodeproj
+
 	@echo ——- Fixing ServerSide Xcode project
-#TODO fix fixServerSideXcodeProject.sh
-#-${KITURA_IOS_BUILD_SCRIPTS_DIR}/fixServerSideXcodeProject.sh ${NUMBER_OF_BITS}
+	ruby ${KITURA_IOS_BUILD_SCRIPTS_DIR}/fix_server_side_xcode_project.rb ServerSide/*.xcodeproj "" ${NUMBER_OF_BITS}
+
 	@echo --- Opening Kitura Xcode Project
 	open ServerSide/Kitura.xcodeproj
 
