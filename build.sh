@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Copyright IBM Corporation 2017
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,8 +16,6 @@
 
 # Travis CI build file for Kitura Tests on iOS
 # Building Kitura on OS X and running it on iOS, in a simulator
-
-#!/bin/bash
 
 git clone https://github.com/IBM-Swift/Package-Builder.git
 ./Package-Builder/build-package.sh -projectDir $(pwd)
