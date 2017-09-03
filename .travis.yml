@@ -28,3 +28,6 @@ matrix:
 
 script:
   - ./build.sh
+
+git:
+  submodules: false
