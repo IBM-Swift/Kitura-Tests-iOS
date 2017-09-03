@@ -18,9 +18,18 @@
 # Building Kitura on OS X and running it on iOS, in a simulator
 
 # build iOSStatic library
+echo fetch Builder/Scripts
 make Builder/Scripts
+echo download curl
 curl -O https://curl.haxx.se/download/curl-7.43.0.tar.bz2
-bzip2 -d curl-7.43.0.tar.bz2; tar xopf curl-7.43.0.tar; rm -r curl-7.43.0.tar
+echo downloaded curl
+
+bzip2 -d curl-7.43.0.tar.bz2
+tar xopf curl-7.43.0.tar
+rm -r curl-7.43.0.tar
+
+echo building curl static library
 bash ./Builder/Scripts/buildCurlStaticLibrary.sh curl-7.43.0
 
+echo running make test
 make test
