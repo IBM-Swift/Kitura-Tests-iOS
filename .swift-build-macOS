@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # Travis CI build file for Kitura Tests on iOS
-# Building Kitura on OS X
+# Building Kitura on OS X and running it on iOS, in a simulator
 
 # build iOSStatic library
 echo fetch Builder/Scripts
@@ -31,5 +31,5 @@ rm -r curl-7.43.0.tar
 echo building curl static library
 bash ./Builder/Scripts/buildCurlStaticLibrary.sh curl-7.43.0
 
-echo running make prepareXcode
-make prepareXcode
+echo running make test
+make test
