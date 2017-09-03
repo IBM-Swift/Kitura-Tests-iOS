@@ -2,7 +2,7 @@
 
 # Tests for Kitura on iOS
 This project builds Kitura project on iOS, to enable Kitura testing on iOS.
-
+[![Build Status](https://travis-ci.org/vadimeisenbergibm/Kitura-Tests-iOS.svg?branch=master)](https://travis-ci.org/vadimeisenbergibm/Kitura-Tests-iOS)
 ![macOS](https://img.shields.io/badge/os-macOS-green.svg?style=flat)
 ![iOS](https://img.shields.io/badge/os-iOS-red.svg?style=flat)
 ![Apache 2](https://img.shields.io/badge/license-Apache2-blue.svg?style=flat)
