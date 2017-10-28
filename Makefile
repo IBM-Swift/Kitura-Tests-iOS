@@ -36,7 +36,7 @@ prepareXcode:
 	make NUMBER_OF_BITS="64" prepareXcodeAll
 
 test: prepareXcode
-	xcodebuild test -project ServerSide/*.xcodeproj -scheme Kitura -destination 'platform=iOS Simulator,OS=10.3.1,name=iPhone 7'
+	xcodebuild test -project ServerSide/*.xcodeproj -scheme Kitura-Package -destination 'platform=iOS Simulator,OS=11.0.1,name=iPhone 8'
 
 ServerSide/Package.swift:
 	@echo --- Fetching submodules
