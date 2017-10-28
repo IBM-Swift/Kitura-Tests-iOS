@@ -14,6 +14,14 @@
 
 export KITURA_IOS_BUILD_SCRIPTS_DIR=Builder/Scripts
 
+ifeq ($(SWIFT_SNAPSHOT), swift-4.0-RELEASE)
+SIMULATOR_OS=11.0
+DEVICE=iPhone 8
+else
+SIMULATOR_OS=11.0.1
+DEVICE=iPhone 8
+endif
+
 all: prepareXcode
 
 prepareXcodeAll: iOSStaticLibraries/Curl ServerSide/Package.swift
@@ -36,7 +44,7 @@ prepareXcode:
 	make NUMBER_OF_BITS="64" prepareXcodeAll
 
 test: prepareXcode
-	xcodebuild test -project ServerSide/*.xcodeproj -scheme Kitura-Package -destination 'platform=iOS Simulator,OS=11.0,name=iPhone 8'
+	xcodebuild test -project ServerSide/*.xcodeproj -scheme Kitura-Package -destination 'platform=iOS Simulator,OS=${SIMULATOR_OS},name=${DEVICE}'
 
 ServerSide/Package.swift:
 	@echo --- Fetching submodules
