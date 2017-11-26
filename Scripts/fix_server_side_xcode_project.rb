@@ -17,14 +17,16 @@ require 'xcodeproj'
 
 require_relative '../Builder/Scripts/settings_helper'
 require_relative '../Builder/Scripts/target_helper'
-require_relative '../Builder/Scripts/constants'
+require_relative '../Builder/Scripts/libraries'
 
 server_project_file = ARGV[0];
 number_of_bits = ARGV[1];
 
 server_project = Xcodeproj::Project.open(server_project_file);
 kitura_tests_target = get_first_target_by_name(server_project, "KituraTests")
-fix_build_settings_of_target(kitura_tests_target, Constants::get_headers_path(number_of_bits),
-                             Constants::LIBRARY_PATH)
+libraries = Libraries.new(number_of_bits)
+
+fix_build_settings_of_target(kitura_tests_target,libraries.headers_path, libraries.library_path,
+                             libraries.linked_libraries)
 
 server_project.save;
