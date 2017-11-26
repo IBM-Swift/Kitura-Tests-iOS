@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-export KITURA_IOS_BUILD_SCRIPTS_DIR=Builder/Scripts
-
 ifeq ($(SWIFT_SNAPSHOT), swift-4.0-RELEASE)
 SIMULATOR_OS=11.0
 DEVICE=iPhone 8
@@ -34,7 +32,7 @@ prepareXcodeAll: iOSStaticLibraries/Curl ServerSide/Package.swift
 	cd ServerSide && swift package generate-xcodeproj
 
 	@echo ——- Fixing ServerSide Xcode project
-	ruby ${KITURA_IOS_BUILD_SCRIPTS_DIR}/fix_server_side_xcode_project.rb ServerSide/*.xcodeproj "" ${NUMBER_OF_BITS}
+	ruby Builder/Scripts/fix_server_side_xcode_project.rb ServerSide/*.xcodeproj "" ${NUMBER_OF_BITS}
 	ruby Scripts/fix_server_side_xcode_project.rb ServerSide/*.xcodeproj ${NUMBER_OF_BITS}
 
 prepareXcode32:
