@@ -22,7 +22,7 @@ endif
 
 all: prepareXcode
 
-prepareXcodeAll: iOSStaticLibraries/Curl ServerSide/Package.swift
+prepareXcodeAll: iOSStaticLibraries/Curl ServerSide/Package.swift Builder/Scripts
 	rm -f ServerSide/.build/checkouts/Kitura-net.git--*/Sources/CHTTPParser/include/module.modulemap
 	@echo --- Generating ServerSide Xcode project
 	cd ServerSide && swift package generate-xcodeproj
